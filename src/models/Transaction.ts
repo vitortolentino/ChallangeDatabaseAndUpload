@@ -20,7 +20,12 @@ class Transaction {
   @Column()
   type: 'income' | 'outcome';
 
-  @Column('decimal')
+  @Column('decimal', {
+    transformer: {
+      to: (data): string => data,
+      from: (data): number => parseFloat(data),
+    },
+  })
   value: number;
 
   @Column('uuid')

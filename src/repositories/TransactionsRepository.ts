@@ -60,7 +60,7 @@ class TransactionsRepository extends Repository<Transaction> {
     const isIncome = type === 'income';
     return {
       income: isIncome ? income + value : income,
-      outcome: isIncome ? outcome + value : outcome,
+      outcome: !isIncome ? outcome + value : outcome,
     };
   }
 }
