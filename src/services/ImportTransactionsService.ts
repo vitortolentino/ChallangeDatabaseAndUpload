@@ -77,7 +77,7 @@ class ImportTransactionsService {
   ): Promise<Array<Category[]>> {
     const existentCategories = await categoriesRepository.find({
       where: { title: In(categories) },
-      select: ['title'],
+      select: ['title', 'id'],
     });
 
     const existentCategoriesTitles = existentCategories.map(
